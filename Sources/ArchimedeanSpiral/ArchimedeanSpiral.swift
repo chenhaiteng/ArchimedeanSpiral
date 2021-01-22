@@ -9,7 +9,7 @@
 import Foundation
 import CoreGraphics
 
-struct CGAngle {
+public struct CGAngle {
     public var radians: CGFloat
     
     public var degrees: CGFloat {
@@ -45,7 +45,7 @@ struct CGAngle {
     }
 }
 
-struct CGPolarPoint {
+public struct CGPolarPoint {
     var radius: CGFloat
     var cgangle: CGAngle
 }
@@ -56,7 +56,7 @@ extension CGPolarPoint {
     }
 }
 
-struct ArchimedeanSpiral {
+public struct ArchimedeanSpiral {
     var innerRadius: CGFloat
     var radiusSpacing: CGFloat
     var spacing: CGFloat
