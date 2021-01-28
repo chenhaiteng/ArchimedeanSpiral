@@ -53,6 +53,10 @@ public struct CGPolarPoint {
         radius = 0
         cgangle = CGAngle()
     }
+    @inlinable public init<T: BinaryFloatingPoint>(radius: T, angle: CGAngle) {
+        self.radius = CGFloat(radius)
+        cgangle = angle
+    }
 }
 
 extension CGPolarPoint {
@@ -80,12 +84,12 @@ public struct ArchimedeanSpiral {
         let a = innerRadius
         let b = 0.5*radiusSpacing/CGFloat.pi
         var radius = a + b*angle.radians
-        var points: [CGPolarPoint] = [CGPolarPoint(radius: radius, cgangle: start)]
+        var points: [CGPolarPoint] = [CGPolarPoint(radius: radius, angle: start)]
         for _ in 1..<num {
             let delta = approxRadian(radius: radius)
             angle += delta
             radius = a + b*angle.radians
-            points.append(CGPolarPoint(radius: radius, cgangle: angle))
+            points.append(CGPolarPoint(radius: radius, angle: angle))
         }
         return points
     }
