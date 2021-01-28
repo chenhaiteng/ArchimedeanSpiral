@@ -22,8 +22,5 @@ let package = Package(
         .target(
             name: "ArchimedeanSpiral",
             dependencies: []),
-        .testTarget(
-            name: "ArchimedeanSpiralTests",
-            dependencies: ["ArchimedeanSpiral"]),
     ]
 )

@@ -48,6 +48,11 @@ public struct CGAngle {
 public struct CGPolarPoint {
     public var radius: CGFloat
     public var cgangle: CGAngle
+    
+    @inlinable public init() {
+        radius = 0
+        cgangle = CGAngle()
+    }
 }
 
 extension CGPolarPoint {
