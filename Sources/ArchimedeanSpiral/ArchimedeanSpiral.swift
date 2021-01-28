@@ -61,6 +61,12 @@ public struct ArchimedeanSpiral {
     public var radiusSpacing: CGFloat
     public var spacing: CGFloat
     
+    public init<T: BinaryFloatingPoint>(innerRadius: T, radiusSpacing: T, spacing: T) {
+        self.innerRadius = CGFloat(innerRadius)
+        self.radiusSpacing = CGFloat(radiusSpacing)
+        self.spacing = CGFloat(spacing)
+    }
+    
     func equidistantPoints(start: CGAngle, num: Int) -> [CGPolarPoint] {
         guard num > 0 else {
             return []
