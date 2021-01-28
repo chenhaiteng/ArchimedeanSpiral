@@ -67,7 +67,7 @@ public struct ArchimedeanSpiral {
         self.spacing = CGFloat(spacing)
     }
     
-    func equidistantPoints(start: CGAngle, num: Int) -> [CGPolarPoint] {
+    public func equidistantPoints(start: CGAngle, num: Int) -> [CGPolarPoint] {
         guard num > 0 else {
             return []
         }
