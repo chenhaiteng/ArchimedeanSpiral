@@ -4,12 +4,12 @@
 import PackageDescription
 
 let package = Package(
-    name: "ArchimedeanSpiral",
+    name: "ArchimedeanSpiral_Package",
     platforms: [.iOS(.v8), .macOS(.v10_10), .watchOS(.v2), .tvOS(.v9)],
     products: [
         // Products define the executables and libraries a package produces, and make them visible to other packages.
         .library(
-            name: "ArchimedeanSpiral",
+            name: "ArchimedeanSpiral-Package",
             targets: ["ArchimedeanSpiral"]),
     ],
     dependencies: [
@@ -22,5 +22,8 @@ let package = Package(
         .target(
             name: "ArchimedeanSpiral",
             dependencies: []),
+        .testTarget(
+            name: "ArchimedeanSpiralTests",
+            dependencies: ["ArchimedeanSpiral"]),
     ]
 )
