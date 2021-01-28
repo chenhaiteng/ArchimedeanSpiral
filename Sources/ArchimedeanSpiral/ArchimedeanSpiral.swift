@@ -57,9 +57,9 @@ extension CGPolarPoint {
 }
 
 public struct ArchimedeanSpiral {
-    var innerRadius: CGFloat
-    var radiusSpacing: CGFloat
-    var spacing: CGFloat
+    public var innerRadius: CGFloat
+    public var radiusSpacing: CGFloat
+    public var spacing: CGFloat
     
     func equidistantPoints(start: CGAngle, num: Int) -> [CGPolarPoint] {
         guard num > 0 else {
