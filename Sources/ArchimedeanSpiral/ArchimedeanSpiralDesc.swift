@@ -2,14 +2,14 @@
 //  ArchimedeanSpiral.swift
 //  Hundred-Syllable Mantra WatchKit Extension
 //
-//  Created by Chen Hai Teng on 1/7/21.
+//  Created by Chen Hai Teng on 1/22/21.
 //  Copyright © 2021 Chen-Hai Teng. All rights reserved.
 //
 
 import Foundation
 import CoreGraphics
 
-struct CGAngle {
+public struct CGAngle {
     public var radians: CGFloat
     
     public var degrees: CGFloat {
@@ -20,35 +20,19 @@ struct CGAngle {
         radians = 0
     }
 
-    @inlinable public init(radians: Double) {
-        self.init(radians: CGFloat(radians))
+    @inlinable public init<T: BinaryFloatingPoint>(radians: T) {
+        self.radians = CGFloat(radians)
     }
     
-    @inlinable public init(radians: CGFloat) {
-        self.radians = radians
-    }
-
-    @inlinable public init(degrees: Double) {
-        self.init(degrees: CGFloat(degrees))
+    @inlinable public init<T: BinaryFloatingPoint>(degrees: T) {
+        self.radians = CGFloat(degrees)*CGFloat.pi/180
     }
     
-    @inlinable public init(degrees: CGFloat) {
-        self.radians = degrees*CGFloat.pi/180
-    }
-    
-    @inlinable public static func radians(_ radians: Double) -> CGAngle {
+    @inlinable public static func radians<T: BinaryFloatingPoint>(_ radians: T) -> CGAngle {
         CGAngle(radians: radians)
     }
     
-    @inlinable public static func radians(_ radians: CGFloat) -> CGAngle {
-        CGAngle(radians: radians)
-    }
-    
-    @inlinable public static func degrees(_ degrees: Double) -> CGAngle {
-        CGAngle(degrees: degrees)
-    }
-    
-    @inlinable public static func degrees(_ degrees: CGFloat) -> CGAngle {
+    @inlinable public static func degrees<T: BinaryFloatingPoint>(_ degrees: T) -> CGAngle {
         CGAngle(degrees: degrees)
     }
     
@@ -61,23 +45,38 @@ struct CGAngle {
     }
 }
 
-struct CGPolarPoint {
-    var radius: CGFloat
-    var cgangle: CGAngle
+public struct CGPolarPoint {
+    public var radius: CGFloat
+    public var cgangle: CGAngle
+    
+    @inlinable public init() {
+        radius = 0
+        cgangle = CGAngle()
+    }
+    @inlinable public init<T: BinaryFloatingPoint>(radius: T, angle: CGAngle) {
+        self.radius = CGFloat(radius)
+        cgangle = angle
+    }
 }
 
 extension CGPolarPoint {
-    var point: CGPoint {
+    public var cgpoint: CGPoint {
         CGPoint(x: radius*cos(cgangle.radians), y: radius*sin(cgangle.radians))
     }
 }
 
-struct ArchimedeanSpiral {
-    var innerRadius: CGFloat
-    var radiusSpacing: CGFloat
-    var spacing: CGFloat
+public struct ArchimedeanSpiralDesc {
+    public var innerRadius: CGFloat
+    public var radiusSpacing: CGFloat
+    public var spacing: CGFloat
     
-    func equidistantPoints(start: CGAngle, num: Int) -> [CGPolarPoint] {
+    public init<T: BinaryFloatingPoint>(innerRadius: T, radiusSpacing: T, spacing: T) {
+        self.innerRadius = CGFloat(innerRadius)
+        self.radiusSpacing = CGFloat(radiusSpacing)
+        self.spacing = CGFloat(spacing)
+    }
+    
+    public func equidistantPoints(start: CGAngle, num: Int) -> [CGPolarPoint] {
         guard num > 0 else {
             return []
         }
@@ -85,12 +84,12 @@ struct ArchimedeanSpiral {
         let a = innerRadius
         let b = 0.5*radiusSpacing/CGFloat.pi
         var radius = a + b*angle.radians
-        var points: [CGPolarPoint] = [CGPolarPoint(radius: radius, cgangle: start)]
+        var points: [CGPolarPoint] = [CGPolarPoint(radius: radius, angle: start)]
         for _ in 1..<num {
             let delta = approxRadian(radius: radius)
             angle += delta
             radius = a + b*angle.radians
-            points.append(CGPolarPoint(radius: radius, cgangle: angle))
+            points.append(CGPolarPoint(radius: radius, angle: angle))
         }
         return points
     }
