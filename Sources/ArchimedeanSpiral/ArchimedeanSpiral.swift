@@ -46,12 +46,12 @@ public struct CGAngle {
 }
 
 public struct CGPolarPoint {
-    var radius: CGFloat
-    var cgangle: CGAngle
+    public var radius: CGFloat
+    public var cgangle: CGAngle
 }
 
 extension CGPolarPoint {
-    var point: CGPoint {
+    public var cgpoint: CGPoint {
         CGPoint(x: radius*cos(cgangle.radians), y: radius*sin(cgangle.radians))
     }
 }
