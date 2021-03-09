@@ -8,62 +8,7 @@
 
 import Foundation
 import CoreGraphics
-
-public struct CGAngle {
-    public var radians: CGFloat
-    
-    public var degrees: CGFloat {
-        radians*180/CGFloat.pi
-    }
-
-    @inlinable public init() {
-        radians = 0
-    }
-
-    @inlinable public init<T: BinaryFloatingPoint>(radians: T) {
-        self.radians = CGFloat(radians)
-    }
-    
-    @inlinable public init<T: BinaryFloatingPoint>(degrees: T) {
-        self.radians = CGFloat(degrees)*CGFloat.pi/180
-    }
-    
-    @inlinable public static func radians<T: BinaryFloatingPoint>(_ radians: T) -> CGAngle {
-        CGAngle(radians: radians)
-    }
-    
-    @inlinable public static func degrees<T: BinaryFloatingPoint>(_ degrees: T) -> CGAngle {
-        CGAngle(degrees: degrees)
-    }
-    
-    public static func +(lhs:CGAngle, rhs: CGAngle) -> CGAngle {
-        CGAngle(radians: lhs.radians + rhs.radians)
-    }
-    
-    public static func +=(lhs: inout CGAngle, rhs: CGAngle) {
-        lhs.radians += rhs.radians
-    }
-}
-
-public struct CGPolarPoint {
-    public var radius: CGFloat
-    public var cgangle: CGAngle
-    
-    @inlinable public init() {
-        radius = 0
-        cgangle = CGAngle()
-    }
-    @inlinable public init<T: BinaryFloatingPoint>(radius: T, angle: CGAngle) {
-        self.radius = CGFloat(radius)
-        cgangle = angle
-    }
-}
-
-extension CGPolarPoint {
-    public var cgpoint: CGPoint {
-        CGPoint(x: radius*cos(cgangle.radians), y: radius*sin(cgangle.radians))
-    }
-}
+import CoreGraphicsExtension
 
 public struct ArchimedeanSpiralDesc {
     public var innerRadius: CGFloat
