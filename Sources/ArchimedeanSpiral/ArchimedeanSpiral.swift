@@ -33,8 +33,8 @@ public struct ArchimedeanSpiral {
         // Note: the range of acos should be -1...1
         // It means 1.0 - pow(d/radius, 2)*0.5 should be in range -1...1
         // This statements ensure the initial radius located in the range.
-        if radius*2.0 < self.radiusSpacing {
-            radius = self.radiusSpacing/2.0
+        if radius*2.0 < self.spacing {
+            radius = self.spacing/2.0
         }
         var points: [CGPolarPoint] = [CGPolarPoint(radius: radius, angle: start)]
         for _ in 1..<num {
@@ -58,9 +58,9 @@ public struct ArchimedeanSpiral {
         // Note: the range of acos should be -1...1
         // It means 1.0 - pow(d/radius, 2)*0.5 should be in range -1...1
         // This statements ensure the initial radius located in the range.
-        let r = (radius*2.0 < d) ? d/2.0 : radius
+//        let r = (radius*2.0 < d) ? d/2.0 : radius
         
-        let θ = acos(1.0 - pow(d/r, 2)*0.5)
+        let θ = acos(1.0 - pow(d/radius, 2)*0.5)
         return CGAngle.radians(θ)
     }
 }
