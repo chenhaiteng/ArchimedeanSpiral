@@ -61,6 +61,9 @@ public struct ArchimedeanSpiral {
 //        let r = (radius*2.0 < d) ? d/2.0 : radius
         
         let θ = acos(1.0 - pow(d/radius, 2)*0.5)
+        if θ.isNaN {
+            debugPrint("NaN of radius:\(radius)")
+        }
         return CGAngle.radians(θ)
     }
 }
