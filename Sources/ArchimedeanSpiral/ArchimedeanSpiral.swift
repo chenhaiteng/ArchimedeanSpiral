@@ -58,9 +58,9 @@ public struct ArchimedeanSpiral {
         // Note: the range of acos should be -1...1
         // It means 1.0 - pow(d/radius, 2)*0.5 should be in range -1...1
         // This statements ensure the initial radius located in the range.
-//        let r = (radius*2.0 < d) ? d/2.0 : radius
+        let r = (radius*2.0 < d) ? d/2.0 : radius
         
-        let θ = acos(1.0 - pow(d/radius, 2)*0.5)
+        let θ = acos(1.0 - pow(d/r, 2)*0.5)
         if θ.isNaN {
             debugPrint("NaN of radius:\(radius)")
         }
