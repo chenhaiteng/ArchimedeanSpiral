@@ -8,7 +8,7 @@
 
 Pod::Spec.new do |s|
   s.name             = 'ArchimedeanSpiral'
-  s.version          = '1.0.12'
+  s.version          = '1.0.13'
   s.summary          = 'A struct to describe archimedean spiral.'
 # s.swift_version:begin
   s.swift_version  = '5.3.0'
