@@ -10,7 +10,7 @@ import Foundation
 import CoreGraphics
 import CoreGraphicsExtension
 
-public struct ArchimedeanSpiral {
+public struct ArchimedeanSpiral: Sendable {
     public var innerRadius: CGFloat
     public var radiusSpacing: CGFloat
     public var spacing: CGFloat

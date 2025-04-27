@@ -27,7 +27,7 @@ final class ArchimedeanSpiralTests: XCTestCase {
 //        XCTAssertEqual(ArchimedeanSpiral().text, "Hello, World!")
 //    }
 
-    static var allTests = [
+    static let allTests = [
         ("testCGAngle", testCGAngle),
     ]
 }
