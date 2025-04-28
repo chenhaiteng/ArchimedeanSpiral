@@ -8,10 +8,10 @@
 
 Pod::Spec.new do |s|
   s.name             = 'ArchimedeanSpiral'
-  s.version          = '1.1.0'
+  s.version          = '1.1.1'
   s.summary          = 'A struct to describe archimedean spiral.'
 # s.swift_version:begin
-  s.swift_version  = '6.1.0'
+  s.swift_version  = '6.0'
   # s.swift_version    = '${SWIFT_VERSION}'
 
 # s.platform:begin
@@ -47,6 +47,6 @@ Pod::Spec.new do |s|
   # s.dependency 'AFNetworking', '~> 2.3'
   # parse and add dependency here
   # s.dependency:begin
-  s.dependency  'CoreGraphicsExtension', '~> 0.4.2'
+  s.dependency  'CoreGraphicsExtension', '~> 0.5.1'
 
 end
